@@ -99,6 +99,13 @@ body{font-family:-apple-system,"Noto Sans SC","PingFang SC",sans-serif;backgroun
 <div class="footer">数据每5分钟自动更新 · 有问题跟我说～</div>
 
 <script>
+// ======== 屏蔽词 ========
+const BLOCK = ["华泰","江","亿纬锂能","公牛集团","财富趋势"];
+
+function blocked(text) {
+  return BLOCK.some(k => text.includes(k));
+}
+
 // ======== 数据 ========
 const SH = {
   name:"上海", ip:"***.***.***.***",
@@ -120,13 +127,13 @@ const SH = {
     "💼 金融研报（长鑫IPO/高校/央企/地方平台等）"
   ],
   categories:{
-    "💼 金融工作":{"items":["各类研报（上市公司/地方平台/大学基金会/财务公司） ✦ 长鑫科技IPO ✦ 公牛集团 ✦ 股权捐赠法规 ✦ 超级投顾 ✦ 缠论技术分析 ✦ 市场个股分析"],"count":7},
-    "📖 文学出版":{"items":["🎋 竹简上的中国（先秦历史系列，已52期） ✦ 📖 传记文学·江（传记DNA库） ✦ 🤖 ai新技术（巴菲特投Google ✦ 长鑫科技）"],"count":3},
-    "🏛️ 中华五术":{"items":["🏔️山 ✦ 💊医 ✦ 🔮命 ✦ 👁️相（风水系列：A股/美股风水指数、太乙神数） ✦ 📜卜"],"count":5},
-    "📚 日常学习":{"items":["CS50 AI课程 ✦ 大学课程 ✦ 读书笔记 ✦ 各类工具攻略"],"count":4},
-    "🎬 影视创作":{"items":["Seedance视频 ✦ 华泰湖北广告 ✦ 花木兰（初稿+定稿） ✦ 开源项目（huobao-drama/Pixelle-Video/waoowaoo）"],"count":4},
-    "🎵 音乐创作":{"items":["影视配乐 ✦ 文学配乐·竹简 ✦ Suno音乐"],"count":3},
-    "🔐 网络安全":{"items":["🐛 漏洞审计（Cloudflare审计 ✦ Apple/Google审计 ✦ Airbnb审计 ✦ Microsoft审计） ✦ 🏴 CTF"],"count":2},
+    "💼 金融工作":{"items":["各类研报（上市公司/地方平台/大学基金会/财务公司）","长鑫科技IPO","公牛集团","股权捐赠法规","超级投顾","缠论技术分析","市场个股分析"],"count":7},
+    "📖 文学出版":{"items":["🎋 竹简上的中国（先秦历史系列，已52期）","📖 传记文学·江（传记DNA库）","🤖 ai新技术（巴菲特投Google ✦ 长鑫科技）"],"count":3},
+    "🏛️ 中华五术":{"items":["🏔️山","💊医","🔮命","👁️相（风水系列：A股/美股风水指数、太乙神数）","📜卜"],"count":5},
+    "📚 日常学习":{"items":["CS50 AI课程","大学课程","读书笔记","各类工具攻略"],"count":4},
+    "🎬 影视创作":{"items":["Seedance视频","华泰湖北广告","花木兰（初稿+定稿）","开源项目（huobao-drama/Pixelle-Video/waoowaoo）"],"count":4},
+    "🎵 音乐创作":{"items":["影视配乐","文学配乐·竹简","Suno音乐"],"count":3},
+    "🔐 网络安全":{"items":["🐛 漏洞审计（Cloudflare审计 ✦ Apple/Google审计 ✦ Airbnb审计 ✦ Microsoft审计）","🏴 CTF"],"count":2},
   },
   crons:[
     {name:"🌙 每晚交流",time:"每天 20:00",ok:true},
@@ -153,8 +160,8 @@ const SV = {
   categories:{
     "🎨 视觉创作":{"items":["codex生图（公众号封面/配图/资产配置/数据中心等）"],"count":4},
     "📊 报告输出":{"items":["PPT批量生成脚本（build_ppt_batch*.py）"],"count":2},
-    "🛠️ AI工具链":{"items":["codex ✦ claude ✦ gemini CLI ✦ puppeteer ✦ slidemind"],"count":5},
-    "🔒 运维管理":{"items":["安全加固 ✦ 自动重启 ✦ 隧道保活 ✦ 端口管理"],"count":4}
+    "🛠️ AI工具链":{"items":["codex","claude","gemini CLI","puppeteer","slidemind"],"count":5},
+    "🔒 运维管理":{"items":["安全加固","自动重启","隧道保活","端口管理"],"count":4}
   },
   crons:[
     {name:"🔄 自动重启",time:"每周六 02:00",ok:true},
@@ -178,12 +185,24 @@ function render() {
     new Date().toLocaleString("zh-CN",{timeZone:"Asia/Shanghai",hour12:false}) + " 更新";
   document.getElementById("serverLabel").textContent = d.name + "服务器 · " + d.ip;
 
-  // 统计卡片
+  // 过滤屏蔽词
+  function filt(arr) {
+    if (!arr) return [];
+    return arr.filter(t => {
+      const text = typeof t === "string" ? t : (t.title||"") + (t.desc||"") + (t.status||"") + (t.tags||[]).join("");
+      return !blocked(text);
+    });
+  }
+
+  // 统计卡片（用过滤后数量）
+  const ipList = filt(d.in_progress);
+  const blList = filt(d.backlog);
+  const doneList = filt(d.done);
   const s = d.stats;
   document.getElementById("stats").innerHTML = `
-    <div class="stat-card ip"><div class="num">${s.backlog}</div><div class="label">📥 待办</div></div>
-    <div class="stat-card ipg"><div class="num">${s.progress}</div><div class="label">🔄 在途</div></div>
-    <div class="stat-card done"><div class="num">${s.done}</div><div class="label">✅ 已完成</div></div>
+    <div class="stat-card ip"><div class="num">${blList.length}</div><div class="label">📥 待办</div></div>
+    <div class="stat-card ipg"><div class="num">${ipList.length}</div><div class="label">🔄 在途</div></div>
+    <div class="stat-card done"><div class="num">${doneList.length}</div><div class="label">✅ 已完成</div></div>
     <div class="stat-card blk"><div class="num">${s.blocked}</div><div class="label">🚫 阻塞</div></div>
   `;
 
@@ -191,9 +210,9 @@ function render() {
   let boardHtml = "";
   
   // 在途
-  boardHtml += `<div class="column"><div class="col-hdr"><span>🔄 在途</span><span class="cnt">${d.in_progress.length}</span></div><div class="col-body">`;
-  if(d.in_progress.length===0) boardHtml += '<div class="empty">暂无</div>';
-  else d.in_progress.forEach(t => {
+  boardHtml += `<div class="column"><div class="col-hdr"><span>🔄 在途</span><span class="cnt">${ipList.length}</span></div><div class="col-body">`;
+  if(ipList.length===0) boardHtml += '<div class="empty">暂无</div>';
+  else ipList.forEach(t => {
     boardHtml += `<div class="task"><div class="tt">${t.title}</div><div class="meta"><span>${t.status}</span>${t.tags.map(tg => {
       const c = tg==="安全"?"tag-o":tg==="学习"?"tag-s":tg==="写作"?"tag-w":"tag-f";
       return `<span class="tag ${c}">${tg}</span>`;
@@ -202,23 +221,26 @@ function render() {
   boardHtml += `</div></div>`;
 
   // 待办
-  boardHtml += `<div class="column"><div class="col-hdr"><span>📥 待办</span><span class="cnt">${d.backlog.length}</span></div><div class="col-body">`;
-  if(d.backlog.length===0) boardHtml += '<div class="empty">暂无</div>';
-  else d.backlog.forEach(t => boardHtml += `<div class="task"><div class="tt">${t}</div></div>`);
+  boardHtml += `<div class="column"><div class="col-hdr"><span>📥 待办</span><span class="cnt">${blList.length}</span></div><div class="col-body">`;
+  if(blList.length===0) boardHtml += '<div class="empty">暂无</div>';
+  else blList.forEach(t => boardHtml += `<div class="task"><div class="tt">${t}</div></div>`);
   boardHtml += `</div></div>`;
 
   // 已完成
-  boardHtml += `<div class="column" style="grid-column:1/-1"><div class="col-hdr"><span>✅ 已完成</span><span class="cnt">${d.done.length}</span></div><div class="col-body">`;
-  d.done.forEach(t => boardHtml += `<div class="task"><div class="tt">${t}</div></div>`);
+  boardHtml += `<div class="column" style="grid-column:1/-1"><div class="col-hdr"><span>✅ 已完成</span><span class="cnt">${doneList.length}</span></div><div class="col-body">`;
+  doneList.forEach(t => boardHtml += `<div class="task"><div class="tt">${t}</div></div>`);
   boardHtml += `</div></div>`;
 
   document.getElementById("board").innerHTML = boardHtml;
 
-  // 成果分类
+  // 成果分类（过滤屏蔽词）
   const cats = d.categories;
   let catHtml = "";
   for(const [name, data] of Object.entries(cats)) {
-    catHtml += `<div class="cat-card"><div class="cat-name">${name}</div><div class="cat-items">${data.items.join("<br>")}</div><div class="cat-count">${data.count} 项成果</div></div>`;
+    if (blocked(name)) continue;
+    const filtered = (data.items||[]).filter(i => !blocked(i));
+    if (filtered.length === 0) continue;
+    catHtml += `<div class="cat-card"><div class="cat-name">${name}</div><div class="cat-items">${filtered.join("<br>")}</div><div class="cat-count">${filtered.length} 项成果</div></div>`;
   }
   document.getElementById("categories").innerHTML = catHtml;
 
