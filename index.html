@@ -233,14 +233,14 @@ function render() {
 
   document.getElementById("board").innerHTML = boardHtml;
 
-  // 成果分类（过滤屏蔽词）
+  // 成果分类（过滤屏蔽词后✦串起）
   const cats = d.categories;
   let catHtml = "";
   for(const [name, data] of Object.entries(cats)) {
     if (blocked(name)) continue;
     const filtered = (data.items||[]).filter(i => !blocked(i));
     if (filtered.length === 0) continue;
-    catHtml += `<div class="cat-card"><div class="cat-name">${name}</div><div class="cat-items">${filtered.join("<br>")}</div><div class="cat-count">${filtered.length} 项成果</div></div>`;
+    catHtml += `<div class="cat-card"><div class="cat-name">${name}</div><div class="cat-items">${filtered.join(" ✦ ")}</div><div class="cat-count">${data.count} 项成果</div></div>`;
   }
   document.getElementById("categories").innerHTML = catHtml;
 
