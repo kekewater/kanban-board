@@ -105,9 +105,9 @@ const SH = {
   stats:{backlog:0, progress:4, done:11, blocked:0},
   in_progress:[
     {title:"🎋 竹简上的中国（公众号系列）",status:"不定期",tags:["写作"],desc:"历史故事系列，持续产出"},
-    {title:"🤖 CS50 AI课程",status:"每天学习",tags:["学习"],desc:"哈佛人工智能课程"},
-    {title:"🔐 网络安全轮审",status:"每周一",tags:["安全"],desc:"本周Cloudflare审计已完成"},
-    {title:"📝 公众号文章",status:"不定期",tags:["写作"],desc:"最近：巴菲特投Google（7/20已发）"}
+    {title:"📖 传记文学·江",status:"整理中",tags:["写作"],desc:"传记DNA库，大量资料采集中"},
+    {title:"🏛️ 中华五术·风水系列",status:"进行中",tags:["写作"],desc:"A股/美股风水指数、太乙神数年度预测"},
+    {title:"💼 金融研报（长鑫/高校/央企等）",status:"持续",tags:["金融"],desc:"各类机构研报与分析报告"}
   ],
   backlog:[],
   done:[
@@ -116,16 +116,15 @@ const SH = {
     "📖 MIT MAS.S60论文翻译（7/12）",
     "📄 巴菲特投Google分析（7/20公众号发）",
     "🔋 锂电产业链周报（5/25）— 6个子任务",
-    "📊 央企/高校/欣旺达等研报",
     "🧪 Swarm审计测试（7/17）",
     "🎯 Kanban Demo流水线（7/18）"
   ],
   categories:{
-    "🔐 网络安全":{"items":["Cloudflare审计 ✦ Apple/Google审计 ✦ Airbnb/Microsoft审计"],"count":5},
-    "💰 金融":{"items":["锂电周报 ✦ 巴菲特分析 ✦ 央企/高校/欣旺达报告 ✦ 长鑫科技IPO"],"count":8},
-    "📖 文学":{"items":["竹简上的中国 ✦ 传记文学·江 ✦ MIT翻译"],"count":3},
-    "🎬 影视/🎵 音乐":{"items":["Seedance视频 ✦ Suno音乐创作"],"count":2},
-    "🧪 测试/其他":{"items":["Swarms测试 ✦ Demo流水线"],"count":2}
+    "💼 金融工作":{"items":["各类研报（上市公司/地方平台/大学基金会/财务公司） ✦ 长鑫科技IPO ✦ 公牛集团 ✦ 股权捐赠法规 ✦ 超级投顾 ✦ 缠论技术分析 ✦ 市场个股分析"],"count":7},
+    "📖 文学出版":{"items":["🎋 竹简上的中国 ✦ 📖 传记文学·江（大量传记DNA库） ✦ 🏛️ 中华五术·风水系列（A股/美股风水指数、太乙神数）"],"count":3},
+    "🎬 影视创作":{"items":["Seedance视频 ✦ 华泰湖北广告 ✦ 花木兰（初稿+定稿） ✦ 开源项目（huobao-drama/Pixelle-Video/waoowaoo）"],"count":4},
+    "🎵 音乐创作":{"items":["影视配乐 ✦ 文学配乐·竹简 ✦ Suno音乐"],"count":3},
+    "🔐 安全审计":{"items":["Cloudflare审计（7/20） ✦ Apple/Google审计（7/18） ✦ 网站审计报告 ✦ Gutenberg周刊审计"],"count":4}
   },
   crons:[
     {name:"🌙 每晚交流",time:"每天 20:00",ok:true},
