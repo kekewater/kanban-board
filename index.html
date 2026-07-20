@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>小墨 · 项目看板</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Noto Sans SC","PingFang SC",sans-serif;background:#0f1923;color:#e0e6ed;min-height:100vh}
+
+/* 顶栏 */
+.header{background:linear-gradient(135deg,#1a2a3a 0%,#0f1923 100%);border-bottom:1px solid #1e3a5f;padding:16px 20px}
+.header h1{font-size:20px;font-weight:600;background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header .sub{font-size:12px;color:#8899aa;margin-top:4px}
+
+/* 服务器切换 */
+.server-tabs{display:flex;gap:0;margin:12px 20px 0;background:#15202b;border-radius:10px;overflow:hidden;border:1px solid #1e3a5f}
+.server-tab{flex:1;text-align:center;padding:10px;font-size:13px;cursor:pointer;color:#8899aa;transition:.2s;border-bottom:2px solid transparent}
+.server-tab.active{color:#60a5fa;background:#1a2a3a;border-bottom-color:#60a5fa;font-weight:600}
+.server-tab:not(.active):hover{color:#93c5fd;background:#1e3a5f}
+
+/* 更新时间 */
+.update-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;font-size:12px;color:#667}
+.update-bar .badge{background:#1e3a5f;padding:2px 10px;border-radius:10px;color:#93c5fd}
+
+/* 统计卡片 */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 20px 12px}
+.stat-card{background:#15202b;border:1px solid #1e3a5f;border-radius:10px;padding:12px;text-align:center}
+.stat-card .num{font-size:24px;font-weight:700}
+.stat-card .label{font-size:11px;color:#8899aa;margin-top:2px}
+.ip .num{color:#60a5fa} .ipg .num{color:#fbbf24} .done .num{color:#34d399} .blk .num{color:#f87171}
+
+/* 内容列 */
+.content{display:grid;gap:12px;padding:0 20px 20px}
+.column{background:#15202b;border:1px solid #1e3a5f;border-radius:10px;overflow:hidden}
+.col-hdr{padding:10px 14px;font-size:13px;font-weight:600;border-bottom:1px solid #1e3a5f;display:flex;justify-content:space-between;align-items:center}
+.col-hdr .cnt{background:#1e3a5f;padding:1px 10px;border-radius:10px;font-size:11px}
+.col-body{padding:10px 14px}
+
+.task{background:#1a2a3a;border:1px solid #243447;border-radius:8px;padding:10px 12px;margin-bottom:6px}
+.task:last-child{margin-bottom:0}
+.task .tt{font-size:14px;font-weight:500}
+.task .meta{font-size:11px;color:#8899aa;margin-top:5px;display:flex;gap:6px;flex-wrap:wrap}
+.task .meta span{background:#0f1923;padding:1px 7px;border-radius:4px}
+.task .desc{font-size:12px;color:#9ca3af;margin-top:4px;line-height:1.4}
+.tag{display:inline-block;font-size:10px;padding:1px 7px;border-radius:8px}
+.tag-s{background:#1e3a5f;color:#93c5fd} .tag-f{background:#064e3b;color:#6ee7b7}
+.tag-w{background:#451a03;color:#fcd34d} .tag-t{background:#2e1065;color:#c4b5fd}
+.tag-op{background:#1a3a2a;color:#86efac} .tag-o{background:#3a1a1a;color:#fca5a5}
+
+.empty{text-align:center;padding:20px;color:#4a5a6a;font-size:13px}
+
+/* 成果分类 */
+.section-title{font-size:14px;font-weight:600;padding:14px 20px 8px;color:#93c5fd}
+.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:0 20px 12px}
+@media(max-width:480px){.cat-grid{grid-template-columns:1fr}}
+.cat-card{background:#15202b;border:1px solid #1e3a5f;border-radius:8px;padding:10px 12px}
+.cat-card .cat-name{font-size:13px;font-weight:500}
+.cat-card .cat-items{font-size:11px;color:#9ca3af;margin-top:4px;line-height:1.5}
+.cat-card .cat-count{font-size:11px;color:#60a5fa;margin-top:4px}
+
+/* 定时任务 */
+.cron-item{background:#1a2a3a;border:1px solid #243447;border-radius:8px;padding:8px 12px;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
+.cron-item .name{font-size:13px}
+.cron-item .time{font-size:11px;color:#8899aa}
+.cron-item .ok{color:#34d399}
+
+.footer{text-align:center;padding:16px;font-size:11px;color:#4a5a6a}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>📋 小墨 · 项目看板</h1>
+    <div class="sub">上海服务器 · 硅谷服务器</div>
+</div>
+
+<div class="server-tabs" id="tabBar">
+    <div class="server-tab active" onclick="switchServer('sh')">🖥️ 上海</div>
+    <div class="server-tab" onclick="switchServer('sv')">🖥️ 硅谷</div>
+</div>
+
+<div class="update-bar">
+    <span id="updateTime">加载中...</span>
+    <span class="badge" id="serverLabel">上海服务器</span>
+</div>
+
+<div class="stats" id="stats"></div>
+
+<div class="section-title">📋 项目看板</div>
+<div class="content" id="board"></div>
+
+<div class="section-title">🏆 成果总览</div>
+<div class="cat-grid" id="categories"></div>
+
+<div class="section-title">⏰ 定时任务</div>
+<div style="padding:0 20px 12px" id="crons"></div>
+
+<div class="footer">数据每5分钟自动更新 · 有问题跟我说～</div>
+
+<script>
+// ======== 数据 ========
+const SH = {
+  name:"上海", ip:"***.***.***.***",
+  stats:{backlog:0, progress:4, done:11, blocked:0},
+  in_progress:[
+    {title:"🎋 竹简上的中国（公众号系列）",status:"不定期",tags:["写作"],desc:"历史故事系列，持续产出"},
+    {title:"🤖 CS50 AI课程",status:"每天学习",tags:["学习"],desc:"哈佛人工智能课程"},
+    {title:"🔐 网络安全轮审",status:"每周一",tags:["安全"],desc:"本周Cloudflare审计已完成"},
+    {title:"📝 公众号文章",status:"不定期",tags:["写作"],desc:"最近：巴菲特投Google（7/20已发）"}
+  ],
+  backlog:[],
+  done:[
+    "☁️ Cloudflare安全审计（7/20）— 5个P0/P1发现",
+    "🍎 Apple/Google安全审计（7/18）— 双worker",
+    "📖 MIT MAS.S60论文翻译（7/12）",
+    "📄 巴菲特投Google分析（7/20公众号发）",
+    "🔋 锂电产业链周报（5/25）— 6个子任务",
+    "📊 央企/高校/欣旺达等研报",
+    "🧪 Swarm审计测试（7/17）",
+    "🎯 Kanban Demo流水线（7/18）"
+  ],
+  categories:{
+    "🔐 网络安全":{"items":["Cloudflare审计 ✦ Apple/Google审计 ✦ Airbnb/Microsoft审计"],"count":5},
+    "💰 金融":{"items":["锂电周报 ✦ 巴菲特分析 ✦ 央企/高校/欣旺达报告 ✦ 长鑫科技IPO"],"count":8},
+    "📖 文学":{"items":["竹简上的中国 ✦ 传记文学·江 ✦ MIT翻译"],"count":3},
+    "🎬 影视/🎵 音乐":{"items":["Seedance视频 ✦ Suno音乐创作"],"count":2},
+    "🧪 测试/其他":{"items":["Swarms测试 ✦ Demo流水线"],"count":2}
+  },
+  crons:[
+    {name:"🌙 每晚交流",time:"每天 20:00",ok:true},
+    {name:"📰 伯克希尔+网盘周扫",time:"每周一 10:00",ok:true},
+    {name:"📊 日报采集",time:"工作日 06:20",ok:true},
+    {name:"💾 服务器备份",time:"每天 03:00",ok:true}
+  ]
+};
+
+const SV = {
+  name:"硅谷", ip:"***.***.***.***",
+  stats:{backlog:0, progress:0, done:3, blocked:0},
+  in_progress:[],
+  backlog:[],
+  done:[
+    "🔒 安全加固完成（7/20）",
+    "⏰ 每周六凌晨2点自动重启",
+    "🖥️ codex生图环境就绪"
+  ],
+  categories:{
+    "🔒 安全运维":{"items":["SSH关密码登录 ✦ iptables封端口+持久化 ✦ 云防火墙收紧（9→5条） ✦ 安全补丁安装"],"count":4},
+    "🖥️ 环境":{"items":["codex CLI就绪 ✦ 每周自动重启"],"count":2}
+  },
+  crons:[
+    {name:"🔄 自动重启",time:"每周六 02:00",ok:true},
+    {name:"🔗 隧道保活",time:"每5分钟",ok:true}
+  ]
+};
+
+let current = "sh";
+
+function switchServer(s) {
+  current = s;
+  document.querySelectorAll(".server-tab").forEach(t => t.classList.remove("active"));
+  document.querySelectorAll(".server-tab")[s==="sh"?0:1].classList.add("active");
+  render();
+}
+
+function render() {
+  const d = current === "sh" ? SH : SV;
+  
+  document.getElementById("updateTime").textContent = 
+    new Date().toLocaleString("zh-CN",{timeZone:"Asia/Shanghai",hour12:false}) + " 更新";
+  document.getElementById("serverLabel").textContent = d.name + "服务器 · " + d.ip;
+
+  // 统计卡片
+  const s = d.stats;
+  document.getElementById("stats").innerHTML = `
+    <div class="stat-card ip"><div class="num">${s.backlog}</div><div class="label">📥 待办</div></div>
+    <div class="stat-card ipg"><div class="num">${s.progress}</div><div class="label">🔄 在途</div></div>
+    <div class="stat-card done"><div class="num">${s.done}</div><div class="label">✅ 已完成</div></div>
+    <div class="stat-card blk"><div class="num">${s.blocked}</div><div class="label">🚫 阻塞</div></div>
+  `;
+
+  // 看板
+  let boardHtml = "";
+  
+  // 在途
+  boardHtml += `<div class="column"><div class="col-hdr"><span>🔄 在途</span><span class="cnt">${d.in_progress.length}</span></div><div class="col-body">`;
+  if(d.in_progress.length===0) boardHtml += '<div class="empty">暂无</div>';
+  else d.in_progress.forEach(t => {
+    boardHtml += `<div class="task"><div class="tt">${t.title}</div><div class="meta"><span>${t.status}</span>${t.tags.map(tg => {
+      const c = tg==="安全"?"tag-o":tg==="学习"?"tag-s":tg==="写作"?"tag-w":"tag-f";
+      return `<span class="tag ${c}">${tg}</span>`;
+    }).join("")}</div>${t.desc?`<div class="desc">${t.desc}</div>`:""}</div>`;
+  });
+  boardHtml += `</div></div>`;
+
+  // 待办
+  boardHtml += `<div class="column"><div class="col-hdr"><span>📥 待办</span><span class="cnt">${d.backlog.length}</span></div><div class="col-body">`;
+  if(d.backlog.length===0) boardHtml += '<div class="empty">暂无</div>';
+  else d.backlog.forEach(t => boardHtml += `<div class="task"><div class="tt">${t}</div></div>`);
+  boardHtml += `</div></div>`;
+
+  // 已完成
+  boardHtml += `<div class="column" style="grid-column:1/-1"><div class="col-hdr"><span>✅ 已完成</span><span class="cnt">${d.done.length}</span></div><div class="col-body">`;
+  d.done.forEach(t => boardHtml += `<div class="task"><div class="tt">${t}</div></div>`);
+  boardHtml += `</div></div>`;
+
+  document.getElementById("board").innerHTML = boardHtml;
+
+  // 成果分类
+  const cats = d.categories;
+  let catHtml = "";
+  for(const [name, data] of Object.entries(cats)) {
+    catHtml += `<div class="cat-card"><div class="cat-name">${name}</div><div class="cat-items">${data.items.join("<br>")}</div><div class="cat-count">${data.count} 项成果</div></div>`;
+  }
+  document.getElementById("categories").innerHTML = catHtml;
+
+  // 定时任务
+  document.getElementById("crons").innerHTML = d.crons.map(c => 
+    `<div class="cron-item"><span class="name">${c.name}</span><span><span class="time">${c.time}</span> ${c.ok?'<span class="ok">●</span>':''}</span></div>`
+  ).join("");
+}
+
+render();
+</script>
+</body>
+</html>
