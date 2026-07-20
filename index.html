@@ -138,17 +138,24 @@ const SH = {
 
 const SV = {
   name:"硅谷", ip:"***.***.***.***",
-  stats:{backlog:0, progress:0, done:3, blocked:0},
-  in_progress:[],
+  stats:{backlog:0, progress:0, done:5, blocked:0},
+  in_progress:[
+    {title:"🎨 视觉创作环境",status:"就绪",tags:["生图"],desc:"codex/Claude Code配图生成"}
+  ],
   backlog:[],
   done:[
-    "🔒 安全加固完成（7/20）",
+    "🎨 生图：巴菲特封面+配图3张（7/20）",
+    "🔒 SSH关密码登录+iptables持久化",
+    "🛡️ 云防火墙收紧（9→5条）+安全补丁",
     "⏰ 每周六凌晨2点自动重启",
-    "🖥️ codex生图环境就绪"
+    "🛠️ codex/claude/gemini CLI工具链就绪"
   ],
   categories:{
-    "🔒 安全运维":{"items":["SSH关密码登录 ✦ iptables封端口+持久化 ✦ 云防火墙收紧（9→5条） ✦ 安全补丁安装"],"count":4},
-    "🖥️ 环境":{"items":["codex CLI就绪 ✦ 每周自动重启"],"count":2}
+    "🎨 视觉创作":{"items":["codex生图（公众号封面/配图/资产配置/数据中心等）"],"count":4},
+    "📊 报告输出":{"items":["PPT批量生成脚本（build_ppt_batch*.py）"],"count":2},
+    "🎵 音乐制作":{"items":["Suno音乐 + AI配乐工具链"],"count":2},
+    "🛠️ AI工具链":{"items":["codex ✦ claude ✦ gemini CLI ✦ puppeteer ✦ slidemind"],"count":5},
+    "🔒 运维管理":{"items":["安全加固 ✦ 自动重启 ✦ 隧道保活 ✦ 端口管理"],"count":4}
   },
   crons:[
     {name:"🔄 自动重启",time:"每周六 02:00",ok:true},
