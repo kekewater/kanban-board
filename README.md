@@ -1,6 +1,6 @@
 # 📋 项目总看板
 
-> 最后更新：2026-07-30 20:11 | ✅ 已完成项目已归档至 `~/stories/📦日常存档/已完成项目归档/`
+> 最后更新：2026-07-31 20:03 | ✅ 已完成项目已归档至 `~/stories/📦日常存档/已完成项目归档/`
 
 ---
 
@@ -9,7 +9,10 @@
 | 任务 | 状态 | 说明 |
 |:----|:---:|:-----|
 | 🎋 **「AI作品版权登记之路」公众号文章** | ✅ 已推送草稿箱 | 含3张原创配图+封面，草稿箱 Media ID: `PHkMkm9wjN5oiHG4niCcetLGWZEB8y3EwQfQVn93b-Er_kjpsmFXLGpOkaRdjydm` | `~/stories/AI新技术/ai版权/` |
-| 🐍 **PaddleOCR CPU版** | ✅ 已安装（2.10.0） | 扫描PDF/图片文字识别，避开内存问题 |
+| 🖼️ **Codex生图 → codex-image-generation skill** | ✅ 已固化 | 含提示词库+铁律+踩坑 | `~/.hermes/skills/codex-image-generation/` |
+| 📋 **资源索引 Manifest** | ✅ 已创建 | 本地/SV/网盘三域 | `~/资料索引.md` |
+
+| ---
 | 🐍 **crawl4ai** | ✅ 已安装（v0.9.2） | Python爬虫库，上海服务器本地跑 |[devops/crawl4ai]|
 | 🌐 **wigolo** | ✅ 已安装（v0.2.1） | MCP搜索引擎，硅谷服务器 |[devops/wigolo]|
 | 🏢 **OfficeCLI** | ✅ 已安装（v0.2.120） | AI文档生成（PPT/DOCX/XLSX），上海+硅谷 |[devops/officecli]|
@@ -23,7 +26,9 @@
 
 | 成果 | 日期 | 说明 |
 |:----|:---:|:-----|
-| 🛡️ **Cloudflare安全巡检W31·Swarm四线程全量** | 07-27 | 4-worker Swarm(Recon/5问审计/CSP分析/漏洞验证)→验证门控通过→合成完成。最大发现：Cloudflare Agents Week 2026约20个Agent原生产品，5个P0攻击面(Agent Memory/Artifacts/Mesh/AI Search/Memory+PI持久化)。6个CVE确认+3个新CVE(CVE-2026-12707/12523/41321)。CSP约束更新V9-V11+C0部分修复验证。WAF今日3条新规则Log模式。agent-perspective-bug-hunting→v1.8.0 | `~/stories/🔐网络安全/Agent视角安全巡检_Cloudflare_20260727.md` |
+|| 📚 **老年痴呆/阿尔茨海默论治精华** | 07-31 | 帮Keke整理AD论治资料：西医确诊（武汉中南章军建教授标杆+武汉市一医院/省中西医结合医院）+中医调理（省中医院脑病科）+家庭照护「多言勤动缩食畅腑」。含仑卡奈单抗等新药解读 | `~/stories/📚日常学习/中医/老年痴呆_阿尔茨海默论治精华_20260731.md` |
+|| 🧬 **AlphaFold×中医药+AI科普深聊** | 07-31 | AlphaFold2/3原理、ColabFold vs 本地部署对比、中医药「测蛋白」（网络药理学+分子对接，抗新冠中药筛选/AD研究案例）、「蛋白质全解密能否治所有病」三层拆解（结构≠干预≠治病≠全病）+agent在科研中的边界 | 微信会话 |
+|| 🛡️ **Cloudflare安全巡检W31·Swarm四线程全量** | 07-27 | 4-worker Swarm(Recon/5问审计/CSP分析/漏洞验证)→验证门控通过→合成完成。最大发现：Cloudflare Agents Week 2026约20个Agent原生产品，5个P0攻击面(Agent Memory/Artifacts/Mesh/AI Search/Memory+PI持久化)。6个CVE确认+3个新CVE(CVE-2026-12707/12523/41321)。CSP约束更新V9-V11+C0部分修复验证。WAF今日3条新规则Log模式。agent-perspective-bug-hunting→v1.8.0 | `~/stories/🔐网络安全/Agent视角安全巡检_Cloudflare_20260727.md` |
 || 🛡️ **wp2shell链漏洞验证·双CVE确认** | 07-28 | 本地WordPress 7.0(localhost:8888)完整验证CVE-2026-63030(Route Confusion)+CVE-2026-60137(SQLi)。攻击链：双重嵌套desync→GET绕过→SQLi→oEmbed缓存→管理员创建→webshell RCE。5问框架+CSP约束传播建模，142行验证报告。第二个公开确认的AI发现零日漏洞链 | `~/stories/🔐网络安全/漏洞验证/wp2shell_验证报告_20260728.md` |
 |||| 🎋 **竹简·屈原·楚辞(day60)** | 07-29 | 屈原出身→离骚九歌→张仪欺楚→放逐江南→怀沙自沉。已推公众号草稿箱 | `~/stories/zh/day60_屈原·楚辞.txt`
 ||| 🎋 **竹简·蔺相如完璧归赵(day61)** | 07-30 | 完璧归赵→渑池之会→将相和开端。已推公众号草稿箱 | `~/stories/zh/day61_蔺相如完璧归赵.md`
