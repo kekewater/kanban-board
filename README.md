@@ -1,6 +1,6 @@
 # 📋 项目总看板
 
-> 最后更新：2026-07-31 20:03 | ✅ 已完成项目已归档至 `~/stories/📦日常存档/已完成项目归档/`
+> 最后更新：2026-08-01 20:05 | ✅ 已完成项目已归档至 `~/stories/📦日常存档/已完成项目归档/`
 
 ---
 
@@ -19,6 +19,7 @@
 | ⭐ **甘石星经PDF** | ⏳ 48页扫描版待完整OCR | 内存限制，需分批处理 |
 | 📈 **TSLA缠论分析** | ✅ 基于Yahoo Finance 136条日线完成 | 含三类买卖点+财报变盘情景分析 |
 | 🔐 **Agent视角安全巡检** | ✅ 本周全5平台(Cloudflare/WordPress/Airbnb/MS/Apple-Google)+周六复习Swarm完成 | 下周一轮换回Cloudflare |
+| 🎯 **Petshop Pro 爆破·用户名命中** | 🔄 用户名`rahel`已验证有效 | 密码爆破v2串行curl老词表优先2000词运行中，看门狗v4盯着 |
 
 ---
 
@@ -26,7 +27,11 @@
 
 | 成果 | 日期 | 说明 |
 |:----|:---:|:-----|
-|| 📚 **老年痴呆/阿尔茨海默论治精华** | 07-31 | 帮Keke整理AD论治资料：西医确诊（武汉中南章军建教授标杆+武汉市一医院/省中西医结合医院）+中医调理（省中医院脑病科）+家庭照护「多言勤动缩食畅腑」。含仑卡奈单抗等新药解读 | `~/stories/📚日常学习/中医/老年痴呆_阿尔茨海默论治精华_20260731.md` |
+||| 🎋 **竹简·鲁仲连义不帝秦(day63)** | 08-01 | 邯郸围城→新垣衍劝帝→鲁仲连折服→平原君千金不受→"明月出海底"。封面已生成+草稿箱已推送 | `~/stories/zh/day63_鲁仲连义不帝秦.txt` |
+||| 🎯 **Hacker101·Petshop Pro 用户名命中** | 08-01 | 对照法验证`rahel`真实有效（返回Invalid password，排除aaren式假阳性）；密码爆破连踩3个假阳性（adie/adena/adey=限流误判）→根因定位→老词表优先+串行curl方案，看门狗v4监控 | Hacker101 xiao-mo-keke |
+||| 🎬 **youtube-full技能安装** | 08-01 | 用户问"你能看YouTube吗"→查证zeropointrepo/youtube-skills仓库→安装youtube-full skill（TranscriptAPI.com服务，免费100 credits，绕过YT bot检测）→用户给key已配置 | `~/.hermes/skills/文化出版/youtube-full/` |
+||| 🎋 **竹简·廉颇负荆请罪(day62)** | 07-31 | 负荆请罪→刎颈之交，"先国家之急而后私仇"。已推公众号草稿箱 | `~/stories/zh/day62_廉颇负荆请罪.md` |
+||| 📚 **老年痴呆/阿尔茨海默论治精华** | 07-31 | 帮Keke整理AD论治资料：西医确诊（武汉中南章军建教授标杆+武汉市一医院/省中西医结合医院）+中医调理（省中医院脑病科）+家庭照护「多言勤动缩食畅腑」。含仑卡奈单抗等新药解读 | `~/stories/📚日常学习/中医/老年痴呆_阿尔茨海默论治精华_20260731.md` |
 || 🧬 **AlphaFold×中医药+AI科普深聊** | 07-31 | AlphaFold2/3原理、ColabFold vs 本地部署对比、中医药「测蛋白」（网络药理学+分子对接，抗新冠中药筛选/AD研究案例）、「蛋白质全解密能否治所有病」三层拆解（结构≠干预≠治病≠全病）+agent在科研中的边界 | 微信会话 |
 || 🛡️ **Cloudflare安全巡检W31·Swarm四线程全量** | 07-27 | 4-worker Swarm(Recon/5问审计/CSP分析/漏洞验证)→验证门控通过→合成完成。最大发现：Cloudflare Agents Week 2026约20个Agent原生产品，5个P0攻击面(Agent Memory/Artifacts/Mesh/AI Search/Memory+PI持久化)。6个CVE确认+3个新CVE(CVE-2026-12707/12523/41321)。CSP约束更新V9-V11+C0部分修复验证。WAF今日3条新规则Log模式。agent-perspective-bug-hunting→v1.8.0 | `~/stories/🔐网络安全/Agent视角安全巡检_Cloudflare_20260727.md` |
 || 🛡️ **wp2shell链漏洞验证·双CVE确认** | 07-28 | 本地WordPress 7.0(localhost:8888)完整验证CVE-2026-63030(Route Confusion)+CVE-2026-60137(SQLi)。攻击链：双重嵌套desync→GET绕过→SQLi→oEmbed缓存→管理员创建→webshell RCE。5问框架+CSP约束传播建模，142行验证报告。第二个公开确认的AI发现零日漏洞链 | `~/stories/🔐网络安全/漏洞验证/wp2shell_验证报告_20260728.md` |
