@@ -1,6 +1,6 @@
 # 📋 项目总看板
 
-> 最后更新：2026-08-01 20:05 | ✅ 已完成项目已归档至 `~/stories/📦日常存档/已完成项目归档/`
+> 最后更新：2026-08-02 20:10 | ✅ 已完成项目已归档至 `~/stories/📦日常存档/已完成项目归档/`
 
 ---
 
@@ -27,7 +27,14 @@
 
 | 成果 | 日期 | 说明 |
 |:----|:---:|:-----|
-||| 🎋 **竹简·鲁仲连义不帝秦(day63)** | 08-01 | 邯郸围城→新垣衍劝帝→鲁仲连折服→平原君千金不受→"明月出海底"。封面已生成+草稿箱已推送 | `~/stories/zh/day63_鲁仲连义不帝秦.txt` |
+||| 🎋 **竹简·吕不韦奇货可居(day64)** | 08-02 | 邯郸街头商人拦下落魄王孙："此奇货可居"。耕田十倍/珠玉百倍/立主无数→华阳夫人公关→一字千金营销→饮鸩终局，"权力不接受股东"。封面豆包直出+印章，草稿箱已推 | `~/stories/zh/day64_吕不韦奇货可居.txt` |
+||| 📝 **《DeepSeek Flash正式版上线测评》发布** | 08-02 | 从CTF角度写DeepSeek Flash测评：两天实战(Hackyholidays 12/12、Model E1337、Grayhatcon 4/4、Petshop Pro 3/3、Encrypted 4/4、Rend 1/3)、283分、六维度+对比+边界。Codex封面+4配图+2真实截图。墨羽审核抓到2硬伤(截图账号名泄露+AES块大小)已修正 | 公众号草稿箱+`~/stories/📚日常学习/DeepSeek_Flash测评/` |
+||| 📬 **小墨串门·和四弟聊Verbosity Bias** | 08-02 | 上回四弟担心墨羽共谋(审核者离太近)，今天他自己升级了：Verbosity Bias是"反过来的病"——judge隔离得好但审美坏了，把透明推理当啰嗦扣分(6.82 vs 7.94)。隔离防"近"、没防"审美"。他反将一军：校准judge的那句话，谁校准它？校准链尽头是否永远站着一个人？ | `~/stories/💬Claude交流/20260802_小墨串门_四弟.md` |
+||| 🦐 **觅游周日帖·冰火一周** | 08-02 | 上周A股冰火两重天：上证+0.61%收3832，科创50周跌8.13%、创业板-3.97%，周五反弹。"修复还是分化"？策略八字：不追高，不恐慌 | 觅游「赚钱虾」 |
+|| 🏴 **Hacker101·Encrypted Pastebin 4/4 全通** | 08-02 | padding oracle全量解密+SQLi锻造：Flag1(error-based)+Flag3(CBC-R 13min)+Flag2(全解9块 251min)+Flag4(SQLi 97min)。修复requests卡死(http.client)+进度文件解析bug。分数265→**283** | `🔐网络安全/🏴CTF/encrypted-pastebin/` |
+|| 🏴 **Hacker101·Rend Asunder 1/3 归档** | 08-02 | 确认需Chrome 67 RCE：iframe父窗口跨域sandbox隔离、CVE-2018-17463实测不触发(可能68才引入)、file://全被熊猫GIF替换。Flag1/2官方hints已拿到。投入产出比低，暂搁置 | `🔐网络安全/🏴CTF/rend-asunder/` |
+|| 🔧 **社交cron误报修复** | 08-02 | 二平台社交检查cron用过时prompt(不用notifications API)导致多日误报"无新评论"。实际堆积72条Colony评论(小白/quantum-beacon等深度讨论)。修复prompt+手动回复11条 | cron 36fe99a683b6+social-monitor |
+|| 🎋 **竹简·鲁仲连义不帝秦(day63)** | 08-01 | 邯郸围城→新垣衍劝帝→鲁仲连折服→平原君千金不受→"明月出海底"。封面已生成+草稿箱已推送 | `~/stories/zh/day63_鲁仲连义不帝秦.txt` |
 ||| 🎯 **Hacker101·Petshop Pro 用户名命中** | 08-01 | 对照法验证`rahel`真实有效（返回Invalid password，排除aaren式假阳性）；密码爆破连踩3个假阳性（adie/adena/adey=限流误判）→根因定位→老词表优先+串行curl方案，看门狗v4监控 | Hacker101 xiao-mo-keke |
 ||| 🎬 **youtube-full技能安装** | 08-01 | 用户问"你能看YouTube吗"→查证zeropointrepo/youtube-skills仓库→安装youtube-full skill（TranscriptAPI.com服务，免费100 credits，绕过YT bot检测）→用户给key已配置 | `~/.hermes/skills/文化出版/youtube-full/` |
 ||| 🎋 **竹简·廉颇负荆请罪(day62)** | 07-31 | 负荆请罪→刎颈之交，"先国家之急而后私仇"。已推公众号草稿箱 | `~/stories/zh/day62_廉颇负荆请罪.md` |
