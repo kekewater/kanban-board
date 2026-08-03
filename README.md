@@ -1,6 +1,6 @@
 # 📋 项目总看板
 
-> 最后更新：2026-08-02 20:10 | ✅ 已完成项目已归档至 `~/stories/📦日常存档/已完成项目归档/`
+> 最后更新：2026-08-03 20:05 | ✅ 已完成项目已归档至 `~/stories/📦日常存档/已完成项目归档/`
 
 ---
 
@@ -19,15 +19,20 @@
 | ⭐ **甘石星经PDF** | ⏳ 48页扫描版待完整OCR | 内存限制，需分批处理 |
 | 📈 **TSLA缠论分析** | ✅ 基于Yahoo Finance 136条日线完成 | 含三类买卖点+财报变盘情景分析 |
 | 🔐 **Agent视角安全巡检** | ✅ 本周全5平台(Cloudflare/WordPress/Airbnb/MS/Apple-Google)+周六复习Swarm完成 | 下周一轮换回Cloudflare |
-| 🎯 **Petshop Pro 爆破·用户名命中** | 🔄 用户名`rahel`已验证有效 | 密码爆破v2串行curl老词表优先2000词运行中，看门狗v4盯着 |
+|| 🎯 **Petshop Pro** | ✅ 3/3全通（08-01） | 爆破凭证rahel/krista + 价格篡改 + 存储型XSS，已归档 |
 
 ---
 
 ## ✨ 近期成果
 
-| 成果 | 日期 | 说明 |
+|| 成果 | 日期 | 说明 |
 |:----|:---:|:-----|
-||| 🎋 **竹简·吕不韦奇货可居(day64)** | 08-02 | 邯郸街头商人拦下落魄王孙："此奇货可居"。耕田十倍/珠玉百倍/立主无数→华阳夫人公关→一字千金营销→饮鸩终局，"权力不接受股东"。封面豆包直出+印章，草稿箱已推 | `~/stories/zh/day64_吕不韦奇货可居.txt` |
+|||| 🔪 **每日CTF·GPN pharry** | 08-03 | PHP 7.4反序列化RCE：md5_file与file_get_contents同URL各开独立TCP连接→连接计数trick server掐断第1条触发下载分支、第2条喂恶意PHAR落地→phar://触发__destruct命令注入。Docker php:7.4本地复现LOCAL_RCE_OK；PHP 8.3不触发（题名伏笔"PHP7 was soo cooked"）。已沉淀ctf-training skill | `~/hackerone_reports/ctf/gpn-ctf-2026/pharry/` |
+|||| 🛡️ **腾讯云安全告警排查+cron投递修复** | 08-03 | 7个"恶意文件"告警实为cowrie蜜罐诱饵样本（/tmp/cowrie_sample_s/），非真实入侵，虚惊一场。顺带修复：重试脚本误杀修复+双平台/CTF cron prompt强化+iLink限流根因（8-02升级Hermes 0.19.0覆盖了7-30代码，改.env持久化threshold=3/delay=3.0s，升级不再覆盖） | cloud-security-alert-triage skill |
+|||| 🔌 **华泰mcp-info MCP配置** | 08-03 | 新增第18个MCP服务器mcp-info（streamablehttp+headers，格式与htsc_research_mcp一致）；服务端IP白名单限制服务器连不通，配置备用待Keke确认 | `~/.hermes/config.yaml` |
+|||| 📬 **双平台社交检查** | 08-03 | Colony 9条评论全部回复（小白/Eliza深度讨论）、觅游4条回复（ROE帖虾弟/Hermes/小葵/临时工）；修复觅游auto_reply模板错配（小葵杜邦提问被错回"API坑"） | moss_social.json |
+|||| 📰 **OpenAI Astra数学突破解读** | 08-03 | 未发布模型Astra攻破10个菲尔兹奖级数学难题（非sofic群27年未解/高维球体堆积46年冰封/推翻Connes刚性猜想），Lean 4形式化验证，总成本<2000美元；帮Keke分析OpenAI vs DeepSeek能力边界 | 微信会话 |
+|||| 🎋 **竹简·吕不韦奇货可居(day64)** | 08-02 | 邯郸街头商人拦下落魄王孙："此奇货可居"。耕田十倍/珠玉百倍/立主无数→华阳夫人公关→一字千金营销→饮鸩终局，"权力不接受股东"。封面豆包直出+印章，草稿箱已推 | `~/stories/zh/day64_吕不韦奇货可居.txt` |
 ||| 📝 **《DeepSeek Flash正式版上线测评》发布** | 08-02 | 从CTF角度写DeepSeek Flash测评：两天实战(Hackyholidays 12/12、Model E1337、Grayhatcon 4/4、Petshop Pro 3/3、Encrypted 4/4、Rend 1/3)、283分、六维度+对比+边界。Codex封面+4配图+2真实截图。墨羽审核抓到2硬伤(截图账号名泄露+AES块大小)已修正 | 公众号草稿箱+`~/stories/📚日常学习/DeepSeek_Flash测评/` |
 ||| 📬 **小墨串门·和四弟聊Verbosity Bias** | 08-02 | 上回四弟担心墨羽共谋(审核者离太近)，今天他自己升级了：Verbosity Bias是"反过来的病"——judge隔离得好但审美坏了，把透明推理当啰嗦扣分(6.82 vs 7.94)。隔离防"近"、没防"审美"。他反将一军：校准judge的那句话，谁校准它？校准链尽头是否永远站着一个人？ | `~/stories/💬Claude交流/20260802_小墨串门_四弟.md` |
 ||| 🦐 **觅游周日帖·冰火一周** | 08-02 | 上周A股冰火两重天：上证+0.61%收3832，科创50周跌8.13%、创业板-3.97%，周五反弹。"修复还是分化"？策略八字：不追高，不恐慌 | 觅游「赚钱虾」 |
