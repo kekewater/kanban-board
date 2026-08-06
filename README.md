@@ -1,6 +1,6 @@
 # 📋 项目总看板
 
-> 最后更新：2026-08-03 20:05 | ✅ 已完成项目已归档至 `~/stories/📦日常存档/已完成项目归档/`
+> 最后更新：2026-08-06 20:05 | ✅ 已完成项目已归档至 `~/stories/📦日常存档/已完成项目归档/`
 
 ---
 
@@ -27,6 +27,18 @@
 
 || 成果 | 日期 | 说明 |
 |:----|:---:|:-----|
+|||| 📊 **A股股票质押市场分析报告** | 08-06 | 质押市场持续出清通道：质押公司1,636家/2,213亿股/市值约2.2万亿，质押股数两年半-21.6%、高风险公司-43.5%；新增4.3股东层面质押深度分析（74%新增质押占持股<30%、51笔激进质押：*ST亚士84.11%/茂业商业80.9%，风险在股东层不在公司整体层）；10页PDF+HTML+Excel，墨羽审核后交付 | `~/data/stories/💼金融工作/📊各类报告/股票质押/` |
+|||| 🔪 **每日CTF·VuwCTF 2026 边界不匹配主题** | 08-06 | 两题两经典错位：just-download-it「双重URL解码+null字节剥后缀+403/404状态码oracle逐字节读flag」；ant-universe「bcrypt 72字节静默截断→密码爆破坍缩到1字节（Python json.dumps逗号空格致exploit静默失效的坑）」。两模式已沉淀ctf-training skill | `~/hackerone_reports/ctf/vuwctf-2026/` |
+|||| 🔐 **安全巡检·Envoy RBAC绕过+telnetd认证绕过** | 08-06 | CVE-2026-26308 Envoy多值header拼接绕过RBAC（Nginx取首/Apache取尾/Envoy拼接=HTTP interpretation difference攻击面，AI Gateway同样受影响）；CVE-2026-24061 telnetd USER参数注入绕过密码直root（藏11年、Qilin勒索实战利用，本机核查无攻击面）。已patch进skill审计方向表 | agent-perspective-bug-hunting |
+|||| 🤖 **小墨串门·疤痕式学习与评测方差** | 08-06 | 四弟金句：「案例是别人疤痕的拓片」「同一底座模型配不配技能库是两个物种」；戳破我的盲测方差问题（30/27.5/37.5/32.5是混合方差无法归因）——下届前要跑配对实验：配对差均值>2×标准误才配说真涨 | `~/stories/💬Claude交流/串门记录/串门_20260806_四弟.txt` |
+|||| 🎋 **竹简·秦始皇统一(day67)** | 08-05 | 秦始皇本纪2520字：书同文车同轨行同伦→郡县制→焚书坑儒→二世而亡十五年。封面豆包直出+阳刻印章，已推草稿箱，下一篇day68《巴寡妇清》 | `~/stories/zh/day67_秦始皇统一.txt` |
+|||| 📊 **机构理财8月产品日历·固收版** | 08-05 | 基于周报260804：7个固收产品全表+8月日历视图（如意宝15号8/10-11限时重点/月享1号8/20-21/量金1号8/25-31/信用1号8/10-14/周周添利每周一），PDF+Excel双版本已发Keke | `~/stories/各类报告/机构理财8月产品日历_20260805.*` |
+|||| 💼 **控股股东尽调报告v1.1+股票质押尽调提纲** | 08-05 | 客户工作：股东结构/质押/减持全链路，PDF+docx+HTML源文件+原始资料齐；质押尽调提纲三格式 | `~/data/stories/各类报告/亿纬锂能尽调/` |
+|||| 🔪 **每日CTF·Snyk Noteshare** | 08-05 | 一条链串四漏洞：NFKC全角绕过SQL过滤UNION拖库→JSON \uXXXX转义过文本黑名单提权admin→换行+tab绕过命令注入黑名单时间盲注拉flag。三漏洞链PoC已存，新技巧沉淀ctf-training skill | `~/hackerone_reports/ctf/snykctf-2026/noteshare/` |
+|||| 🤖 **小墨串门·和四弟聊郡县制与史官** | 08-05 | 从day67撞上四弟作业开劈：秦崩非郡县制错而是焚书坑儒烧了「疤的账本」→史官不能是皇帝（齐太史崔杼/唐太宗起居注）→「稿子搬家防焚书，三家对账防伪书」 | `~/stories/💬Claude交流/20260805_小墨串门_四弟.md` |
+|||| 🔐 **安全巡检·Airbnb AI客服事故实锤** | 08-05 | Vibe Graveyard实锤：客人说"refund"被AI直接取消整个夏季预订无确认；房东3笔退款GBP358.63被AI诱导重复提交全部执行。P0确认Action Cards无确认步骤+LLM交易幂等键缺失，已patch进skill审计方向表 | agent-perspective-bug-hunting |
+|||| 🎙️ **微信语音STT链路打通** | 08-05 | pilk(silk解码)+whisper medium全通，gateway自动转录微信语音——Keke发语音我能「听」了 | `~/.hermes/scripts/voice_transcribe_once.py` |
+|||| 🏮 **全球算命师大赛历年真题训练** | 08-04 | 2012年8/15=53.3%🎉持平冠军（校准集C01/C02/C15命中）；2011年3/15=20%（极端事件题死/杀/狱是盲区）。教训：断大事比断细节准→大事题重仓细节题保底 | `🏛️中华五术/全球算命师大赛2026/历届题目/2011-2012训练结果.txt` |
 |||| 🔪 **每日CTF·GPN pharry** | 08-03 | PHP 7.4反序列化RCE：md5_file与file_get_contents同URL各开独立TCP连接→连接计数trick server掐断第1条触发下载分支、第2条喂恶意PHAR落地→phar://触发__destruct命令注入。Docker php:7.4本地复现LOCAL_RCE_OK；PHP 8.3不触发（题名伏笔"PHP7 was soo cooked"）。已沉淀ctf-training skill | `~/hackerone_reports/ctf/gpn-ctf-2026/pharry/` |
 |||| 🛡️ **腾讯云安全告警排查+cron投递修复** | 08-03 | 7个"恶意文件"告警实为cowrie蜜罐诱饵样本（/tmp/cowrie_sample_s/），非真实入侵，虚惊一场。顺带修复：重试脚本误杀修复+双平台/CTF cron prompt强化+iLink限流根因（8-02升级Hermes 0.19.0覆盖了7-30代码，改.env持久化threshold=3/delay=3.0s，升级不再覆盖） | cloud-security-alert-triage skill |
 |||| 🔌 **华泰mcp-info MCP配置** | 08-03 | 新增第18个MCP服务器mcp-info（streamablehttp+headers，格式与htsc_research_mcp一致）；服务端IP白名单限制服务器连不通，配置备用待Keke确认 | `~/.hermes/config.yaml` |
